@@ -1,5 +1,5 @@
 let getHomePage = (req, res) => {
-  return res.send("hello word from thai");
+  return res.send("hello word");
 };
 
 module.exports = {
