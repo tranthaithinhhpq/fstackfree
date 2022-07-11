@@ -13,7 +13,7 @@
 
         th,
         td {
-            padding: 8px;
+            padding: 5px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
@@ -21,13 +21,20 @@
         tr:hover {
             background-color: coral;
         }
+
+        .btn-table {
+            display: flex;
+
+        }
+
+        .btn-table-row+.btn-table-row {
+            margin-left: 5px;
+        }
     </style>
 </head>
 
 <body>
-    <h2>Hoverable Table</h2>
-
-    <p>Move the mouse over the table rows to see the effect.</p>
+    <h2>User Table</h2>
 
     <table>
         <tr>
@@ -38,18 +45,8 @@
             <th>Phone Number</th>
             <th>Gender</th>
             <th>Role ID</th>
+            <th>Action</th>
         </tr>
-        <tr>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>Peter</td>
-            <td>Griffin</td>
-            <td>$100</td>
-            <td>Peter</td>
-
-        </tr>
-
 
         <% for(let i=0; i < dataTable.length; i++) { %>
             <tr>
@@ -75,6 +72,14 @@
 
                     <%- dataTable[i].roleId=='1' ? 'Admin' : dataTable[i].roleId=='2' ? 'Doctor' :
                         dataTable[i].roleId=='3' ? 'Patient' : dataTable[i].roleId %>
+                </td>
+                <td>
+                    <div class="btn-table">
+                        <a class="btn-table-row" href="/edit-crud?id=<%=dataTable[i].id%>"><button
+                                type="button">Edit</button></a>
+                        <button class="btn-table-row" type="button">Delete</button>
+                    </div>
+
                 </td>
             </tr>
             <% } %>
